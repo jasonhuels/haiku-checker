@@ -22,33 +22,33 @@ export function getSyllables(word) {
         newWord = newWord.slice(0, newWord.length-1);
       }
     }
-    console.log(newWord);
+
     for(let i=0; i<DIPHTHONGS.length; i++) {
       if(newWord.includes(DIPHTHONGS[i])) {
         count++;
-        newWord = newWord.replace(DIPHTHONGS[i], "");
+        newWord = newWord.replace(DIPHTHONGS[i], "#");
       }
     }
-    console.log(newWord);
+
     for(let i=0; i<newWord.length; i++) {
       if(VOWELS.includes(newWord[i])) {
         count++;
         if(VOWELS.includes(newWord[i+1])) {
-          newWord = newWord.replace(newWord[i+1], "");
+          newWord = newWord.replace(newWord[i+1], "#");
         }
-        newWord = newWord.replace(newWord[i], "");
+        newWord = newWord.replace(newWord[i], "#");
       }
     }
     console.log(newWord);
+    newWord = newWord.replace("#", "");
     if(newWord.length >= 3) {
       for(let i=0; i<newWord.length; i++) {
         if(newWord[i].includes("y")) {
-          count++;        
+          count++;
         }
       }
     }
 
   }
-
   return count;
 }
