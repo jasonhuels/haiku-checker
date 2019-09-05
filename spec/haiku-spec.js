@@ -16,6 +16,9 @@ describe("getSyllables", function() {
   it("will correctly identify multiple syllable words", function() {
     expect(getSyllables("javascript")).toEqual(3);
   });
+  it("will recognize words like 'chopped' and 'dropped' are single syllable", function() {
+    expect(getSyllables("chopped")).toEqual(1);
+  });
   it("will correctly words with no vowels except y", function() {
     expect(getSyllables("rhythym")).toEqual(2);
   });

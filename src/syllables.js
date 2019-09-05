@@ -5,6 +5,11 @@ export function getSyllables(word) {
   let newWord = "";
   let reg = /^[a-zA-Z]/;
 
+  if(word[word.length-3] === "'" && word[word.length-2] === 'r' && word[word.length-1] === 'e') {
+    word = word.slice(0, word.length-3);
+  }
+  console.log(word)
+
   // Clean word of non-alphabetic characters
   for(let i=0; i<word.length; i++) {
     if(reg.test(word[i])) {
@@ -15,6 +20,10 @@ export function getSyllables(word) {
   if(newWord.length > 0 && newWord.length <= 3) {
     count = 1;
   } else {
+    if(newWord[newWord.length-3] === 'p' && newWord[newWord.length-2] === 'e' && newWord[newWord.length-1] === 'd') {
+      newWord = newWord.slice(0, newWord.length-3);
+    }
+
     if(newWord[newWord.length-1] === 'e') { // Remove silent 'e' from end of word
       if(newWord[newWord.length-2] === 'l' || newWord[newWord.length-2] === 'r') {
         count++;
