@@ -5,16 +5,17 @@ export function getSyllables(word) {
   let newWord = "";
   let reg = /^[a-zA-Z]/;
 
+  // Clean word of non-alphabetic characters
   for(let i=0; i<word.length; i++) {
     if(reg.test(word[i])) {
       newWord += word[i].toLowerCase();
     }
   }
 
-  if(newWord.length === 1) {
+  if(newWord.length > 0 && newWord.length <= 3) {
     count = 1;
   } else {
-    if(newWord[newWord.length-1] === 'e') {
+    if(newWord[newWord.length-1] === 'e') { // Remove silent 'e' from end of word
       if(newWord[newWord.length-2] === 'l' || newWord[newWord.length-2] === 'r') {
         count++;
         newWord = newWord.slice(0, newWord.length-2);
