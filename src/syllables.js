@@ -2,22 +2,17 @@ export function getSyllables(word) {
   const VOWELS = ["a", "e", "i", "o", "u"];
   const DIPHTHONGS = ["oi", "oy", "ou", "ow", "au", "aw", "oo", "uy", "ye", "ey"];
   let count = 0;
-  let newWord = "";
+  let newWord = word.toLowerCase();
   let reg = /^[a-zA-Z]/;
 
-  if(word[word.length-3] === "'" && word[word.length-2] === 'r' && word[word.length-1] === 'e') {
-    word = word.slice(0, word.length-3);
+  if(newWord[newWord.length-3] === "'" && newWord[newWord.length-2] === 'r' && newWord[newWord.length-1] === 'e') {
+    newWord = newWord.slice(0, newWord.length-3);
   }
-  console.log(word)
+  console.log(newWord)
 
-  // Clean word of non-alphabetic characters
-  for(let i=0; i<word.length; i++) {
-    if(reg.test(word[i])) {
-      newWord += word[i].toLowerCase();
-    }
-  }
 
-  if(newWord.length > 0 && newWord.length <= 3) {
+
+  if(newWord.length > 0 && newWord.length <= 2) {
     count = 1;
   } else {
     if(newWord[newWord.length-3] === 'p' && newWord[newWord.length-2] === 'e' && newWord[newWord.length-1] === 'd') {
@@ -50,9 +45,15 @@ export function getSyllables(word) {
       }
     }
     console.log(newWord);
-    for(let i=0; i<newWord.length; i++) {
-      if(newWord[i].includes("#")) {
-        newWord = newWord.replace("#", "");
+    // for(let i=0; i<newWord.length; i++) {
+    //   if(newWord[i].includes("#")) {
+    //     newWord = newWord.replace("#", "");
+    //   }
+    // }
+    // Clean word of non-alphabetic characters
+    for(let i=0; i<word.length; i++) {
+      if(reg.test(word[i])) {
+        newWord += word[i].toLowerCase();
       }
     }
     console.log(newWord);

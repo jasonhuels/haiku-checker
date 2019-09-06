@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode development",
-    "start": "npm run build; webpack-dev-server --open --mode development",
+    "start": "npm run build & webpack-dev-server --open --mode development",
     "lint": "eslint src/*.js",
-    "test": "./node_modules/karma/bin/karma start karma.conf.js"
+    "test": "node ./node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/jasonhuels/roman-numerals#readme",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.10",
     "eslint": "^4.18.2",
     "eslint-loader": "^2.0.0",
